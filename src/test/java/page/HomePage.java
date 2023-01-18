@@ -2,19 +2,24 @@ package page;
 
 import com.codeborne.selenide.SelenideElement;
 
+import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 
 public class HomePage {
-    private static SelenideElement paymentButton = $(".button");
-    private static SelenideElement creditButton = $(".button_view_extra");
+    private final SelenideElement paymentButton = $(".button");
+    private final SelenideElement creditButton = $(".button_view_extra");
+    public final SelenideElement nameTypeOfTransaction = $("button~h3");
 
-    public static FormPage paymentPage() {
-        paymentButton.click();
+    public FormPage paymentPage() {
+        this.paymentButton.click();
+        nameTypeOfTransaction.shouldHave(text("Оплата по карте")).shouldBe(visible);
         return new FormPage();
     }
 
-    public static FormPage creditPage() {
-        creditButton.click();
+    public FormPage creditPage() {
+        this.creditButton.click();
+        nameTypeOfTransaction.shouldHave(text("Кредит по данным карты")).shouldBe(visible);
         return new FormPage();
     }
 }

@@ -22,14 +22,14 @@ public class ApiUtils {
 
     public static void shouldSendRequestApprovedCard() {
         Card card = new Card(DataHelper.getApprovedCardNumber(),
-        DataHelper.getValidMonth(),
-        DataHelper.getNextYear(),
+        DataHelper.getMonth(0),
+        DataHelper.getYear(1),
         DataHelper.getValidName(),
         DataHelper.getValidCVC());
 
         given()
                 .spec(requestSpec)
-                .body(DataHelper.AuthInfo.createJSON(card))
+                .body(DataHelper.AuthInfo.createBodyPaymentRequest(card))
                 .when()
                 .post("/pay")
                 .then()
@@ -39,13 +39,13 @@ public class ApiUtils {
 
     public static void shouldSendRequestDeclinedCard() {
         Card card = new Card(DataHelper.getDeclinedCardNumber(),
-                DataHelper.getValidMonth(),
-                DataHelper.getNextYear(),
+                DataHelper.getMonth(0),
+                DataHelper.getYear(1),
                 DataHelper.getValidName(),
                 DataHelper.getValidCVC());
         given()
                 .spec(requestSpec)
-                .body(DataHelper.AuthInfo.createJSON(card))
+                .body(DataHelper.AuthInfo.createBodyPaymentRequest(card))
                 .when()
                 .post("/pay")
                 .then()
@@ -55,13 +55,13 @@ public class ApiUtils {
 
     public static void shouldSendCreditRequestApprovedCard() {
         Card card = new Card(DataHelper.getApprovedCardNumber(),
-                DataHelper.getValidMonth(),
-                DataHelper.getNextYear(),
+                DataHelper.getMonth(0),
+                DataHelper.getYear(1),
                 DataHelper.getValidName(),
                 DataHelper.getValidCVC());
         given()
                 .spec(requestSpec)
-                .body(DataHelper.AuthInfo.createJSON(card))
+                .body(DataHelper.AuthInfo.createBodyPaymentRequest(card))
                 .when()
                 .post("/credit")
                 .then()
@@ -71,13 +71,13 @@ public class ApiUtils {
 
     public static void shouldSendCreditRequestDeclinedCard() {
         Card card = new Card(DataHelper.getDeclinedCardNumber(),
-                DataHelper.getValidMonth(),
-                DataHelper.getNextYear(),
+                DataHelper.getMonth(0),
+                DataHelper.getYear(1),
                 DataHelper.getValidName(),
                 DataHelper.getValidCVC());
         given()
                 .spec(requestSpec)
-                .body(DataHelper.AuthInfo.createJSON(card))
+                .body(DataHelper.AuthInfo.createBodyPaymentRequest(card))
                 .when()
                 .post("/credit")
                 .then()

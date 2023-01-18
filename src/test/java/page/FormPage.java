@@ -26,82 +26,64 @@ public class FormPage {
     private static SelenideElement textError = $(".notification_status_error");
     private static SelenideElement textErrorInvalidFormat = $(".input__sub");
     private static List<SelenideElement> textErrorInvalidFormatList = $$(".input__sub");
-   public static Boolean requiredFieldError() {
-       for (SelenideElement element : textErrorInvalidFormatList){
-           element.shouldHave(text("Поле обязательно для заполнения"), Duration.ofSeconds(2)).shouldBe(visible);
-       }
-       return true;
-   }
-    public static SelenideElement paySuccess() {
-        return textSuccess.shouldHave(text("Операция одобрена Банком."), Duration.ofSeconds(15)).shouldBe(visible);
+
+    public void paySuccess() {
+        textSuccess.shouldHave(text("Операция одобрена Банком."), Duration.ofSeconds(15)).shouldBe(visible);
     }
 
-    public static SelenideElement payError() {
-        return textError.shouldHave(text("Ошибка! Банк отказал в проведении операции."), Duration.ofSeconds(15)).shouldBe(visible);
+    public void payError() {
+        textError.shouldHave(text("Ошибка! Банк отказал в проведении операции."), Duration.ofSeconds(15)).shouldBe(visible);
     }
 
-    public static SelenideElement errorInvalidFormat() {
-        return textErrorInvalidFormat.shouldHave(text("Неверный формат"), Duration.ofSeconds(2)).shouldBe(visible);
+    public void errorInvalidFormat() {
+        textErrorInvalidFormat.shouldHave(text("Неверный формат"), Duration.ofSeconds(2)).shouldBe(visible);
     }
 
-    public static SelenideElement errorExpiredCard() {
-        return textErrorInvalidFormat.shouldHave(text("Истёк срок действия карты"), Duration.ofSeconds(2)).shouldBe(visible);
+    public void errorExpiredCard() {
+        textErrorInvalidFormat.shouldHave(text("Истёк срок действия карты"), Duration.ofSeconds(2)).shouldBe(visible);
     }
 
-    public static void setCard(String card) {
+    public void errorInvalidExpirationDate() {
+        textErrorInvalidFormat.shouldHave(text("Неверно указан срок действия карты"), Duration.ofSeconds(2)).shouldBe(visible);
+    }
+
+    public void errorInRequiredField() {
+        for (SelenideElement element : textErrorInvalidFormatList) {
+            element.shouldHave(text("Поле обязательно для заполнения"), Duration.ofSeconds(2)).shouldBe(visible);
+        }
+    }
+
+    public void setCard(String card) {
         cardField.setValue(card);
     }
 
-    public static void setMonth(String month) {
-        monthField.setValue(month);
-    }
-
-    public static void setYear(String year) {
-        yearField.setValue(year);
-    }
-
-    public static void setOwner(String owner) {
-        ownerField.setValue(owner);
-    }
-
-    public static void  setCVC(String cvc) {
-        cvcField.setValue(cvc);
-    }
-
-    public static void setMonth2(String month) {
+    public void setMonth(String month) {
         monthField.sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME, Keys.BACK_SPACE));
         monthField.setValue(month);
     }
 
-    public static void setYear2(String year) {
+    public void setYear(String year) {
         yearField.sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME, Keys.BACK_SPACE));
         yearField.setValue(year);
     }
 
-    public static void setOwner2(String owner) {
+    public void setOwner(String owner) {
         ownerField.sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME, Keys.BACK_SPACE));
         ownerField.setValue(owner);
     }
 
-    public static void setCVC2 (String cvc) {
+    public void  setCVC(String cvc) {
         cvcField.sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME, Keys.BACK_SPACE));
         cvcField.setValue(cvc);
     }
 
-    public static void setValidApprovedCard() {
-        FormPage.setCard(DataHelper.getApprovedCardNumber());
-        FormPage.setMonth(DataHelper.getValidMonth());
-        FormPage.setYear(DataHelper.getNextYear());
-        FormPage.setOwner(DataHelper.getValidName());
-        FormPage.setCVC(DataHelper.getValidCVC());
-    }
 
-    public static void setValidDeclinedCard() {
-        FormPage.setCard(DataHelper.getDeclinedCardNumber());
-        FormPage.setMonth(DataHelper.getValidMonth());
-        FormPage.setYear(DataHelper.getNextYear());
-        FormPage.setOwner(DataHelper.getValidName());
-        FormPage.setCVC(DataHelper.getValidCVC());
+    public void setValidCard(String validCard) {
+        this.setCard(validCard);
+        this.setMonth(DataHelper.getMonth(0));
+        this.setYear(DataHelper.getYear(1));
+        this.setOwner(DataHelper.getValidName());
+        this.setCVC(DataHelper.getValidCVC());
     }
 
 }
