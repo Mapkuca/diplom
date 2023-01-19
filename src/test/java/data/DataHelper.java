@@ -1,9 +1,6 @@
 package data;
 
 import com.github.javafaker.Faker;
-import org.apache.commons.lang3.RandomStringUtils;
-
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
@@ -68,7 +65,6 @@ public class DataHelper {
     public static String getInvalid3Names() {
         return faker.name().firstName() + " " + faker.name().lastName() + " " + faker.name().firstName();
     }
-
 
     public static String getInvalidNameWithNumber () {
         return faker.name().firstName() + getFrom13To99() + " " + faker.name().lastName() + getFrom13To99();
