@@ -16,16 +16,16 @@ import static com.codeborne.selenide.Selenide.$$;
 @Data
 
 public class FormPage {
-    private static SelenideElement cardField = $$("input").get(0);
-    public static SelenideElement monthField = $$("input").get(1);
-    public static SelenideElement yearField = $$("input").get(2);
-    public static SelenideElement ownerField = $$("input").get(3);
-    public static SelenideElement cvcField = $$("input").get(4);
-    public static SelenideElement proceedButton = $(".form-field.button");
-    private static SelenideElement textSuccess = $(".notification_status_ok");
-    private static SelenideElement textError = $(".notification_status_error");
-    private static SelenideElement textErrorInvalidFormat = $(".input__sub");
-    private static List<SelenideElement> textErrorInvalidFormatList = $$(".input__sub");
+    private final SelenideElement cardField = $$("input").get(0);
+    public final SelenideElement monthField = $$("input").get(1);
+    public final SelenideElement yearField = $$("input").get(2);
+    public final SelenideElement ownerField = $$("input").get(3);
+    public final SelenideElement cvcField = $$("input").get(4);
+    public final SelenideElement proceedButton = $(".form-field.button");
+    private final SelenideElement textSuccess = $(".notification_status_ok");
+    private final SelenideElement textError = $(".notification_status_error");
+    private final SelenideElement textErrorInvalidFormat = $(".input__sub");
+    private final List<SelenideElement> textErrorInvalidFormatList = $$(".input__sub");
 
     public void paySuccess() {
         textSuccess.shouldHave(text("Операция одобрена Банком."), Duration.ofSeconds(15)).shouldBe(visible);

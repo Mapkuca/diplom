@@ -14,6 +14,7 @@ public class DataHelper {
                     " \"number\": \"" + card.getNumber() + "\",\n" +
                     " \"month\": \"" + card.getMonth() + "\",\n" +
                     " \"year\": \"" + card.getYear() + "\",\n" +
+                    " \"holder\": \"" + card.getHolder() + "\",\n" +
                     " \"cvc\": \"" + card.getCvc() + "\"\n" +
                     "}";
         }
