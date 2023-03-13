@@ -1,13 +1,11 @@
 Thumbs.db*
-.DS_Store*
-node_modules
-target
 .DS_Store
 HELP.md
-.gradle/
 .gradle
 build/
-initdb
+
+node_modules
+target
 
 ### STS ###
 .apt_generated

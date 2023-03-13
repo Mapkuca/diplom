@@ -21,11 +21,6 @@ public class DataHelper {
     }
     private static final Faker faker = new Faker(Locale.ENGLISH);
 
-    public static String getURL() {
-        return "http://localhost:8080";
-    }
-
-
     public static String getApprovedCardNumber() {
         return "4444 4444 4444 4441";
     }

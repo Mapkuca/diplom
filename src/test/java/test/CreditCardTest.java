@@ -2,23 +2,14 @@ package test;
 
 import data.DataHelper;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import page.FormPage;
 import page.HomePage;
 import utils.DBUtil;
 
-import static com.codeborne.selenide.Selenide.open;
-
-public class CreditCardTest {
+public class CreditCardTest extends BaseTest {
     HomePage homePage = new HomePage();
 
-    @BeforeEach
-    public void setting() {
-        open(DataHelper.getURL());
-        DBUtil.clearingTable("order_entity");
-        DBUtil.clearingTable("credit_request_entity");
-    }
 
     @Test
     public void shouldSuccessCreditWithApprovedCard() {

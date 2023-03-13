@@ -21,7 +21,7 @@ public class FormPage {
     public final SelenideElement yearField = $$("input").get(2);
     public final SelenideElement ownerField = $$("input").get(3);
     public final SelenideElement cvcField = $$("input").get(4);
-    public final SelenideElement proceedButton = $(".form-field.button");
+    public final SelenideElement proceedButton = $(".form-field .button");
     private final SelenideElement textSuccess = $(".notification_status_ok");
     private final SelenideElement textError = $(".notification_status_error");
     private final SelenideElement textErrorInvalidFormat = $(".input__sub");
@@ -53,27 +53,30 @@ public class FormPage {
         }
     }
 
+    private void cleanField(SelenideElement fieldName) {
+        fieldName.sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME, Keys.BACK_SPACE));
+    }
     public void setCard(String card) {
         cardField.setValue(card);
     }
 
     public void setMonth(String month) {
-        monthField.sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME, Keys.BACK_SPACE));
+        cleanField(monthField);
         monthField.setValue(month);
     }
 
     public void setYear(String year) {
-        yearField.sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME, Keys.BACK_SPACE));
+        cleanField(yearField);
         yearField.setValue(year);
     }
 
     public void setOwner(String owner) {
-        ownerField.sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME, Keys.BACK_SPACE));
+        cleanField(ownerField);
         ownerField.setValue(owner);
     }
 
     public void  setCVC(String cvc) {
-        cvcField.sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME, Keys.BACK_SPACE));
+        cleanField(cardField);
         cvcField.setValue(cvc);
     }
 

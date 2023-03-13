@@ -1,6 +1,5 @@
 package test;
 
-import data.DataHelper;
 import org.junit.jupiter.api.Test;
 import utils.ApiUtils;
 
