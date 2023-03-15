@@ -1,19 +1,24 @@
 package test;
 
 import data.DataHelper;
-import data.URL;
 import org.junit.jupiter.api.*;
 
 import page.FormPage;
 import page.HomePage;
-import org.junit.jupiter.api.BeforeEach;
 
 import utils.DBUtil;
 
 import static com.codeborne.selenide.Selenide.open;
 
-public class PayCardTest extends BaseTest {
+public class PayCardTest {
     HomePage homePage = new HomePage();
+
+    @BeforeEach
+    public void setting() {
+        open(DataHelper.getURL());
+        DBUtil.clearingTable("order_entity");
+        DBUtil.clearingTable("payment_entity");
+    }
 
     @Test
     public void shouldPayByApprovedCard() {

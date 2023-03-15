@@ -80,7 +80,6 @@ public class FormPage {
         cvcField.setValue(cvc);
     }
 
-
     public void setValidCard(String validCard) {
         this.setCard(validCard);
         this.setMonth(DataHelper.getMonth(0));
